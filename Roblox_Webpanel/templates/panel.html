@@ -1,0 +1,23 @@
+<h2>{{ panel.name }}</h2>
+
+<p><b>Panel Key:</b></p>
+<code>{{ panel.panel_key }}</code>
+
+<p>Status:
+{% if connected %}
+🟢 Connected
+{% else %}
+🔴 Offline
+{% endif %}
+</p>
+
+<button onclick="send('START_EVENT')">Start Event</button>
+
+<script>
+function send(cmd) {
+fetch("/api/{{ panel.panel_key }}/command", {
+method: "POST",
+body: new URLSearchParams({command: cmd})
+});
+}
+</script>

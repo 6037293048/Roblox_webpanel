@@ -1,0 +1,13 @@
+<h2>Your Panels</h2>
+
+<ul>
+{% for p in panels %}
+<li><a href="/panel/{{ p.id }}">{{ p.name }}</a></li>
+{% endfor %}
+</ul>
+
+<form method="post" action="/create_panel">
+<input type="hidden" name="user_id" value="{{ user_id }}">
+<input name="name" placeholder="Panel Name">
+<button>Panel erstellen</button>
+</form>
